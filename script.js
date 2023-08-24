@@ -12,15 +12,15 @@ const lesson05_2 = () => {
 
     for (let i = 1; i < 101; i++) {
         
-        let cout = 0
+        let count = 0
         
         for (let j = 1; j <= i; j++) {
             if ((i % j) == 0) {
-                cout++
+                count++
             }
         }
         
-        if (cout == 2) {
+        if (count == 2) {
             console.log(`Делители числа ${i}: 1 и ${i}`);
         }
     }
