@@ -1,57 +1,90 @@
 /*******************************************
+    Lesson 4
+*******************************************/
+const lesson04 = () => {
+    const isItString = (data) => {
+        if (typeof(data) !== 'string') {
+            return console.log('Это не строка!');
+        }
+        
+        data = data.trim();
+        
+        if (data.length > 30) {
+            data = data.substr(0,30);
+            console.log(data + '...');
+        } else {
+            console.log(data);
+        }
+    }
+
+    isItString('Чё ты братишка, как дела? Как семья? Как родные? Есть 3000 до зарплаты?');
+    isItString('Вроде все ок!');
+    isItString(123);
+
+
+}
+lesson04();
+/*******************************************
     Lesson 3
 *******************************************/
-// const lang = prompt('На каком языке отобразить информацию: ru / en ? ')
-const lang = 'ru';
-const langArray = {
-    'ru': ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-    'en': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-}
+const lesson03 = () => {
+    // const lang = prompt('На каком языке отобразить информацию: ru / en ? ')
+    const lang = 'ru';
+    const langArray = {
+        'ru': ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+        'en': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    }
 
-// Задание 1
-if (lang.toLowerCase() == 'ru') {
-    console.log(langArray.ru);
-} else if (lang.toLowerCase() == 'en') {
-    console.log(langArray.en);
-} else {
-    console.log('Выберите язык из списка');
-}
-
-switch(lang.toLowerCase()) {
-    case 'ru': 
+    // Задание 1
+    if (lang.toLowerCase() == 'ru') {
         console.log(langArray.ru);
-        break;
-    case 'en':  
+    } else if (lang.toLowerCase() == 'en') {
         console.log(langArray.en);
-        break;
-    default:
+    } else {
         console.log('Выберите язык из списка');
-        break;
+    }
+
+    switch(lang.toLowerCase()) {
+        case 'ru': 
+            console.log(langArray.ru);
+            break;
+        case 'en':  
+            console.log(langArray.en);
+            break;
+        default:
+            console.log('Выберите язык из списка');
+            break;
+    }
+
+    console.log(langArray[lang.toLowerCase()]);
+
+    // Задание 2
+    const namePerson = 'Александр';
+
+    const nameResult = namePerson == 'Артем'
+        ? 'Директор' 
+        : namePerson == 'Александр'
+        ? 'Преподаватель'
+        : 'Студент'
+
+    console.log(nameResult);
 }
+// lesson03()
 
-console.log(langArray[lang.toLowerCase()]);
-
-// Задание 2
-const namePerson = 'Александр';
-
-const nameResult = namePerson == 'Артем'
-    ? 'Директор' 
-    : namePerson == 'Александр'
-    ? 'Преподаватель'
-    : 'Студент'
-
-console.log(nameResult);
 
 /*******************************************
     Lesson 2
 *******************************************/
-const num = 266219;
-const numsArray = num.toString().split('');
-
-let sum = parseInt(numsArray[0]);
-for (let i=1; i < numsArray.length; i++) {
-    sum *= parseInt(numsArray[i]);
+const lesson02 = () => {
+    const num = 266219;
+    const numsArray = num.toString().split('');
+    
+    let sum = parseInt(numsArray[0]);
+    for (let i=1; i < numsArray.length; i++) {
+        sum *= parseInt(numsArray[i]);
+    }
+    sum **= 3;
+    
+    console.log( sum.toString().substring(0, 2) );
 }
-sum **= 3;
-
-console.log( sum.toString().substring(0, 2) );
+// lesson02();
