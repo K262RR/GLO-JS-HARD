@@ -1,7 +1,36 @@
 /*******************************************
     Lesson 5
 *******************************************/
-const lesson05_2 = () => {
+const lesson07 = () => {
+    
+    const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье',];
+    const data = new Date();
+    const currentDay = data.getDay() - 1;
+
+    for (let day in week) {
+        if (day < 5) {
+            if (day == currentDay) {
+                console.log(`%c${week[day]}`, "font-weight: bold; color: green;");
+            } else {
+                console.log(week[day]);
+            }
+            
+        } else {
+            if (day == currentDay) {
+                console.log(`%c${week[day]}`, "font-weight: bold; color: green; color: red; font-style: italic;");
+            } else {
+                console.log(`%c${week[day]}`, "color: red; font-style: italic;");
+            }
+        }
+    }
+
+}
+ lesson07();
+
+/*******************************************
+    Lesson 5
+*******************************************/
+const lesson05 = () => {
     const arr = ['1234', '254', '3674', '4987', '5123', '69', '777'];
 
     for (let i = 0; i < arr.length; i++) {
@@ -26,7 +55,7 @@ const lesson05_2 = () => {
     }
 
 }
-lesson05();
+// lesson05();
 
 /*******************************************
     Lesson 4
