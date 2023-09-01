@@ -1,7 +1,9 @@
-let date = new Date();
+
 
 
 const getDay = () => {
+    let date = new Date();
+
     switch (date.getDay()) {
         case 1: return 'Понедельник';
         case 2: return 'Вторник';
@@ -14,6 +16,8 @@ const getDay = () => {
 }
 
 const getMonth = () => {
+    let date = new Date();
+
     switch (date.getMonth()) {
         case 0: return 'Января';
         case 1: return 'Февраля';
@@ -31,6 +35,7 @@ const getMonth = () => {
 }
 
 const getHour = () => {
+    let date = new Date();
     let hour = date.getHours();
     
     if ( hour === 1 || hour === 21 ) return `${date.getHours()} час`;
@@ -39,6 +44,7 @@ const getHour = () => {
 }
 
 const getTime = (unit) => {
+    let date = new Date();
     let time;
     
     if (unit == 'минуты') {
@@ -65,7 +71,15 @@ const getFormatNumber = (number) => {
     return number
 }
 
+const output = () => {
+    let date = new Date();
 
-console.log(`Сегодня ${getDay()}, ${date.getDate()} ${getMonth()}, ${getHour()} ${getTime('минуты')} ${getTime('секунды')}`);
+    console.log(`Сегодня ${getDay()}, ${date.getDate()} ${getMonth()}, ${getHour()} ${getTime('минуты')} ${getTime('секунды')}`);
 
-console.log(`${getFormatNumber( date.getDay() )}.${getFormatNumber( date.getMonth() )}.${date.getFullYear()} - ${getFormatNumber( date.getHours() )}:${getFormatNumber( date.getMinutes() )}:${getFormatNumber( date.getSeconds() )}`);
+    console.log(`${getFormatNumber( date.getDay() )}.${getFormatNumber( date.getMonth() )}.${date.getFullYear()} - ${getFormatNumber( date.getHours() )}:${getFormatNumber( date.getMinutes() )}:${getFormatNumber( date.getSeconds() )}`);
+}
+
+setInterval(output, 1000);
+
+
+
