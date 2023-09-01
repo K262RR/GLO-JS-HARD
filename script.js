@@ -1,6 +1,3 @@
-
-
-
 const getDay = () => {
     let date = new Date();
 
