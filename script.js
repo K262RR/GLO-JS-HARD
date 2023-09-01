@@ -1,149 +1,71 @@
-/*******************************************
-    Lesson 5
-*******************************************/
-const lesson07 = () => {
+let date = new Date();
+
+
+const getDay = () => {
+    switch (date.getDay()) {
+        case 1: return 'Понедельник';
+        case 2: return 'Вторник';
+        case 3: return 'Среда';
+        case 4: return 'Четверг';
+        case 5: return 'Пятница';
+        case 6: return 'Субота';
+        case 7: return 'Воскресенье';
+    }
+}
+
+const getMonth = () => {
+    switch (date.getMonth()) {
+        case 0: return 'Января';
+        case 1: return 'Февраля';
+        case 2: return 'Марта';
+        case 3: return 'Апреля';
+        case 4: return 'Мая';
+        case 5: return 'Июня';
+        case 6: return 'Июля';
+        case 7: return 'Августа';
+        case 8: return 'Сентября';
+        case 9: return 'Октября';
+        case 10: return 'Ноября';
+        case 11: return 'Декабря';
+    }
+}
+
+const getHour = () => {
+    let hour = date.getHours();
     
-    const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье',];
-    const data = new Date();
-    const currentDay = data.getDay() - 1;
-
-    for (let day in week) {
-        if (day < 5) {
-            if (day == currentDay) {
-                console.log(`%c${week[day]}`, "font-weight: bold; color: green;");
-            } else {
-                console.log(week[day]);
-            }
-            
-        } else {
-            if (day == currentDay) {
-                console.log(`%c${week[day]}`, "font-weight: bold; color: green; color: red; font-style: italic;");
-            } else {
-                console.log(`%c${week[day]}`, "color: red; font-style: italic;");
-            }
-        }
-    }
-
+    if ( hour === 1 || hour === 21 ) return `${date.getHours()} час`;
+    if ( (hour >= 2) && (hour <= 4) || (hour === 22) || (hour === 23) ) return `${date.getHours()} часа`;
+    if ( (hour >= 5) && (hour <= 20) || hour === 0 ) return `${date.getHours()} часов`;
 }
- lesson07();
 
-/*******************************************
-    Lesson 5
-*******************************************/
-const lesson05 = () => {
-    const arr = ['1234', '254', '3674', '4987', '5123', '69', '777'];
-
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].charAt(0) == '2' || arr[i].charAt(0) == '4') {
-            console.log(arr[i]);
-        }
-    }
-
-    for (let i = 1; i < 101; i++) {
-        
-        let count = 0
-        
-        for (let j = 1; j <= i; j++) {
-            if ((i % j) == 0) {
-                count++
-            }
-        }
-        
-        if (count == 2) {
-            console.log(`Делители числа ${i}: 1 и ${i}`);
-        }
-    }
-
-}
-// lesson05();
-
-/*******************************************
-    Lesson 4
-*******************************************/
-const lesson04 = () => {
-    const isItString = (data) => {
-        if (typeof(data) !== 'string') {
-            return console.log('Это не строка!');
-        }
-        
-        data = data.trim();
-        
-        if (data.length > 30) {
-            data = data.substr(0,30);
-            console.log(data + '...');
-        } else {
-            console.log(data);
-        }
-    }
-
-    isItString('Чё ты братишка, как дела? Как семья? Как родные? Есть 3000 до зарплаты?');
-    isItString('Вроде все ок!');
-    isItString(123);
-
-
-}
-// lesson04();
-
-/*******************************************
-    Lesson 3
-*******************************************/
-const lesson03 = () => {
-    // const lang = prompt('На каком языке отобразить информацию: ru / en ? ')
-    const lang = 'ru';
-    const langArray = {
-        'ru': ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-        'en': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    }
-
-    // Задание 1
-    if (lang.toLowerCase() == 'ru') {
-        console.log(langArray.ru);
-    } else if (lang.toLowerCase() == 'en') {
-        console.log(langArray.en);
-    } else {
-        console.log('Выберите язык из списка');
-    }
-
-    switch(lang.toLowerCase()) {
-        case 'ru': 
-            console.log(langArray.ru);
-            break;
-        case 'en':  
-            console.log(langArray.en);
-            break;
-        default:
-            console.log('Выберите язык из списка');
-            break;
-    }
-
-    console.log(langArray[lang.toLowerCase()]);
-
-    // Задание 2
-    const namePerson = 'Александр';
-
-    const nameResult = namePerson == 'Артем'
-        ? 'Директор' 
-        : namePerson == 'Александр'
-        ? 'Преподаватель'
-        : 'Студент'
-
-    console.log(nameResult);
-}
-// lesson03()
-
-/*******************************************
-    Lesson 2
-*******************************************/
-const lesson02 = () => {
-    const num = 266219;
-    const numsArray = num.toString().split('');
+const getTime = (unit) => {
+    let time;
     
-    let sum = parseInt(numsArray[0]);
-    for (let i=1; i < numsArray.length; i++) {
-        sum *= parseInt(numsArray[i]);
+    if (unit == 'минуты') {
+        time = String(date.getMinutes()); 
+        unit = 'минут';
+    } else if (unit == 'секунды') {
+        time = String(date.getSeconds()); 
+        unit = 'секунд';
     }
-    sum **= 3;
-    
-    console.log( sum.toString().substring(0, 2) );
+
+    if (time.slice(-1) == '1') 
+        return `${time} ${unit}а`
+    else if (time.slice(-1) == '2' || time.slice(-1) == '3' || time.slice(-1) == '4') 
+        return `${time} ${unit}ы`
+    else 
+        return `${time} ${unit}`
 }
-// lesson02();
+
+const getFormatNumber = (number) => {
+
+    if (0 <= number && number <= 9) {
+        return `0${number}`
+    }
+    return number
+}
+
+
+console.log(`Сегодня ${getDay()}, ${date.getDate()} ${getMonth()}, ${getHour()} ${getTime('минуты')} ${getTime('секунды')}`);
+
+console.log(`${getFormatNumber( date.getDay() )}.${getFormatNumber( date.getMonth() )}.${date.getFullYear()} - ${getFormatNumber( date.getHours() )}:${getFormatNumber( date.getMinutes() )}:${getFormatNumber( date.getSeconds() )}`);
